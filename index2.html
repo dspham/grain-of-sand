@@ -46,24 +46,43 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/oauth.js"></script>
 
-    <title>Addr3ss</title>
+    <title>GrainOfSand</title>
   </head>
 
   <body>
     <header>
+      <img src="kelpie2.png" id="kelpie_logo" alt="logo">
+      <p><b>GrainOfSand</b> - <a href="https://what3words.com/about/">what3words</a>:  decoder / encoder
       <section class="signin">
         <div class="signin_container">
           <div class="g-signin2" data-onsuccess="onSignIn"></div>
           <button onclick="signOut()" id="sign-out">SignOut</button>
-          <img id="pic" class="img-circle" />
+          <button onclick="show_hide()" class="myButton">
+            <img id="pic" class="img-circle" />
+          </button>
+
+          <div class="dropdown-container">
+            <div class="main__menu">
+
+              <div id="drop-content" style="display: none">
+                <div class="Dropdown-triangle"></div>
+                <ul class="dropdown__list">
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">My Tags</a></li>
+                  <li><a href="#">Settings</a></li>
+                  <li id="outdrop"><a href="#">SignOut</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="tags_container">
-          <button class="btn btn1">button 1</button>
-          <button class="btn btn2">button 2</button>
-          <button class="btn btn3">button 3</button>
-          <button class="btn btn4">button 4</button>
-          <button class="btn btn5">button 5</button>
-          <button class="btn btn6">button 6</button>
+          <button class="btn btn1">Toggle All</button>
+          <button class="btn btn2">Remove All</button>
+          <button class="btn btn3">Tag 1</button>
+          <button class="btn btn4">Tag 2</button>
         </div>
       </section>
     </header>
@@ -74,7 +93,7 @@
       <div id="map">
         <div class="search-container">
           <input id="searchbox" class="controls"" type="text"
-          placeholder="what3words, address, or landmark" name="search">
+          placeholder="what3words | address | landmark | location" name="search">
           <button id="search" type="button">
             <i class="fas fa-search"></i>
           </button>
@@ -83,7 +102,7 @@
             <!-- <div class="split left"> -->
               <section class="history"></section>
       
-              <div>
+              <!-- <div>
                 <button class="toggle_all">
                   Toggle
                 </button>
@@ -93,7 +112,7 @@
                 <span class="first-bar"></span>
                 <span class="second-bar"></span>
                 <span class="third-bar"></span>
-              </div>
+              </div> -->
             <!-- </div> -->
           </nav>
 

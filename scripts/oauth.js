@@ -22,7 +22,7 @@ function signOut () {
 
 function onSignIn (googleUser) {
   var profile = googleUser.getBasicProfile();
-  const url = 'http://0.0.0.0:5000/api/verify';
+  const url = 'http://grainofsand.online/api/verify';
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
@@ -58,13 +58,18 @@ function onSignIn (googleUser) {
           console.log(myhistory)
           $('article').remove()
           for (let x of myhistory) {
-            if (!$(`#${x.query.split(' ').join('_')}`).length) {
-              last = plot(x)
+            last = plot(x)
+            if (x.display !== 'block') {
+              last = { lat: 50, lng: 5 }
+              zoom = 3;
+            }
+            else {
+              last.lng -= 0.075
+              zoom = 12;
             }
           }
-          last.lng -= 0.075
           map.setCenter(last);
-          map.setZoom(12);
+          map.setZoom(zoom);
         } else {
           localStorage.setItem(key, JSON.stringify(myhistory))
         }

@@ -1,11 +1,26 @@
 
 $(document).ready(function () {
   console.log(myhistory)
+  $('#outdrop').click(function () {
+    $('#sign-out').click();
+    $('#drop-content').hide()
+  })
   $('input').on('keyup', function (e) {
     if (e.keyCode === 13) {
       $('#search').click();
     }
   });
+  $('button.btn1').click(function() {
+    $('article:visible button.switch').click()
+    $('article.current').removeClass('current')
+    map.setCenter({lat: 50, lng: 5})
+    map.setZoom(3)
+  })
+  $('button.btn2').click(function () {
+    $('article:visible button.closer').click()
+    map.setCenter({lat: 50, lng: 5})
+    map.setZoom(3)
+  })
   $('#search').click(function () {
     console.log(myhistory)
     console.log($('input').val());
@@ -25,16 +40,20 @@ $(document).ready(function () {
       if (past) {
         $(`#${string.split(' ').join('_')}`)
           .addClass('current')
-          .prependTo('section.history')
+          .css("display", "block")
+          .prependTo('section.history');
+          let marker = $(`#${string.split(' ').join('_')}`).data().marker
+          marker.setVisibility(true)
           $('article').not(`#${string.split(' ').join('_')}`).removeClass('current')
           let coords = { lat: $(`#${string.split(' ').join('_')}`).data().Latitude, lng: $(`#${string.split(' ').join('_')}`).data().Longitude - 0.075 }
           map.setCenter(coords);
           map.setZoom(12);
       } else {
-        $.getJSON('http://0.0.0.0:5000/api/' + string, function (data) {
+        $.getJSON('http://grainofsand.online/api/' + string, function (data) {
           console.log(data);
           if ($.type(data) !== "string") {
             Object.assign(data, {"query": string})
+            Object.assign(data, {"display": "block"})
             myhistory.push(data);
             console.log(myhistory)
             if (signedIn) {
@@ -55,6 +74,10 @@ $(document).ready(function () {
   });
 });
 
+
+
+
+
 // Show hide menu
 function show_hide() {
   let click = document.getElementById("drop-content");
@@ -64,25 +87,3 @@ function show_hide() {
     click.style.display = "none"
   }
 }
-
-
-const navTriggerEl = document.querySelector(".hamburger");
-const navEl = document.querySelector("nav");
-const contentEl = document.querySelector(".content");
-const hamburgerBarsEl = document.getElementsByTagName("span");
-
-function toggleNav() {
-  navTriggerEl.addEventListener("click", function () {
-    navEl.classList.toggle("open");
-    contentEl.classList.toggle("shift");
-    animateHamburgers();
-  });
-}
-
-function animateHamburgers() {
-  for (let item of hamburgerBarsEl) {
-    item.classList.toggle("change");
-  }
-}
-
-toggleNav();

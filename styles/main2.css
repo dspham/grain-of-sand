@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Lato:400,700');
+
+
 header {
 	height: 50px;
 	display: block;
@@ -24,6 +27,7 @@ body {
 	left: 10px;
 	z-index: 1;
 	box-sizing: border-box;
+	box-shadow: 1px 1px 1px grey;
 }
 
 #pic, #sign-out {
@@ -46,14 +50,17 @@ p {
 	width: 70px;
 	height: 50px;
 	border: 0px;
+	background-color: white;
 }
 
 .g-signin2 {
 	float: right;
 	max-height: 50px;
 	border-style: solid;
+	border: none;
+	padding-top: 2px;
 	border-width: 2px;
-	border-color:  rgb(120, 200, 226);
+	border-color: #3498db;
 	margin: 5px;
 }
 
@@ -102,8 +109,10 @@ section.signin {
 	padding: 4px;
 	border: none;
 	padding-left: 20px;
+	padding-bottom: 4px;
 	display: inline-block;
 	box-sizing: border-box;
+	font-family: Lato;
 
 
 		/* padding: 8px 35px 8px 10px; */
@@ -133,21 +142,24 @@ section.signin {
 	background-color: transparent;
 }
 article {
+	position: relative;
 	display: block;
 	height: 40px;
 	width: 100%;
 	background-color: white;
-	text-align: center;
 	color: darkgray;
 	opacity: 0.8;
 }
 
 article p {
+	text-align: center;
 	display: inline-block;
 	width: 88%;
-	height: 100%; 
-	white-space: nowrap; 
+	white-space: nowrap;
+	overflow: hidden;
+	height: 100%;  
 	overflow-x: hidden;
+	margin-left: 3px;
 }
 
 article:hover:not(.current) {
@@ -163,17 +175,21 @@ article:hover:not(.current) {
 	height: 50px;
 	width: 10%;
 	border: none;
-	background-color: rgb(120, 200, 226);
+	background-color:  #3498db;
+	/*background-color: rgb(120, 200, 226);*/
 	color: black;
 	box-sizing: border-box;
 	/* transition: 4s; */
 }
 
-article button {
+article button.switch {
+	position: absolute;
+	right: 0px;
+	top: 0px;
 	display: inline-block;
-	float: right;
 	height: 100%;
 	width: 10%;
+	min-width: 22px;
 	border: none;
 	background-color: lightcyan;
 	color: inherit;
@@ -193,11 +209,18 @@ article.current {
 	opacity: 1.0;
 }
 .tags_container {
+	float: right;
+	margin-right: 5px;
 	text-align: center;
 	height: 100%;
 	overflow-x: auto;
 	white-space: nowrap;
-	/* background-image: url(https://i.imgur.com/QobbDaF.png); */
+	margin-top: 2px;
+	
+}
+
+.btn3, .btn4 {
+	display: none;
 }
 
 .btn {
@@ -206,16 +229,19 @@ article.current {
 	background: none;
 	padding: 10px 30px;
 	font-size: 20px;
-	font-family: "Lato";
+	font-family: Lato;
+	font-weight: 700;
 	cursor: pointer;
-	transition: 1s;
+	transition: 0.3s;
 	position: relative;
 	overflow: hidden;
+	height: 90%;
 }
 
 .btn:hover {
-	color: #b2a17c;
-	border: 1px solid #b2a17c;
+	color: black;
+	background: #3498db;
+	border: 1px solid black;
 }
 
 .btn::before {
@@ -226,7 +252,7 @@ article.current {
 	height: 0%;
 	background: #3498db;
 	z-index: -1;
-	transition: 0.8s;
+	/* transition: 0.8s; */
 }
 
 .nav {
@@ -240,11 +266,90 @@ article.current {
 	width: 35%;
 }
 
-article div.closer {
+article button.closer {
 	display: inline-block;
 	height: 100%;
 	width: 2%;
 	border: none;
 	background-color: red;
 	float: left;
+	margin: 0px;
+	padding: 0px;
+	opacity: inherit;
+}
+
+
+.myButton {
+	padding: 0;
+	font-size: 0;
+	border: none;
+}
+
+.signin_container {
+	float: right;
+}
+
+#drop-content {
+	position: absolute;
+	z-index: 1;
+	top: 52px;
+	right: 50px;
+	/* border-radius: 100%; */
+	/* border: 3px solid black; */
+
+}
+
+#drop-content a {
+	display: block;
+	font-size: 20px;
+	background: #53565d;
+	color: white;
+	text-decoration: none;
+	padding: 3px 30px;
+	margin-top: 0px;
+	font-family: Lato;
+	font-size: 12px;
+}
+
+#drop-content a:hover {
+	background: #111;
+	cursor: pointer;
+}
+
+.Dropdown-triangle {
+	/* display: inline-block; */
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #53565d;
+	position: absolute;
+	top: 1px;
+	right: 38px;
+}
+
+.dropdown__list {
+	margin-top: 11px;
+}
+
+li {
+	list-style-type: none;
+}
+
+#kelpie_logo {
+	position: block;
+	float: left;
+	height: 50px;
+	width: 50px
+}
+
+header p {
+	display: inline-block;
+	position: absolute;
+	left: 70px;
+	font-Family: Lato;
+	font-size: 16px;
+	color: #efe3ca;
+}
+
+header a:link, a:visited {
+	color: #efe3ca;
 }
