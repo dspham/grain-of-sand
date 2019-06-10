@@ -1,1 +1,3 @@
 # grainofsand
+
+![ExampleImage](project.jpg)
